@@ -130,3 +130,71 @@ Features_Norm = train_norm.drop('Cover_Type', axis=1)
 
 #Splitting The Data Into 80%(For Training t_train) And 20%(For Testing t_test)
 t_train_Norm, t_test_Norm, y_train_Norm, y_test_Norm = train_test_split(Labels_Norm, Features_Norm,test_size=0.2)
+
+#Here We Have Tweaked Our classifiers By  Adjusting The Parameters
+dtree_model = DecisionTreeClassifier(criterion="entropy",max_depth = 200000).fit(t_train_Norm, y_train_Norm)
+#Predicting The Values Of Local Splitted Test Data
+Cover_type = dtree_model.predict(t_test_Norm)
+#Printing The Predicted Value Of Local Splitted Test Data
+print("The Predicted Values Cover Type Of Local Test Data",Cover_type)
+#Checking The  accuracy This Model Using The Local Test Data
+Tree=dtree_model.score(t_test_Norm,y_test_Norm)
+#Printing The Accuracy Socre Of The Decision Tree Classifier
+print("The Accuracy Score Of Decision Tree Classifier On Local Test Data",Tree*100)
+
+#Here We Have Tweaked Our classifiers By  Adjusting The Parameters
+extra_tree = ExtraTreeClassifier(random_state=0,criterion ='entropy')
+#Fitting Our training Data
+cls = BaggingClassifier(extra_tree, random_state=0).fit(t_train_Norm, y_train_Norm)
+#Predicting The Values Of Local Splitted Test Data
+Cover_type = cls.predict(t_test_Norm)
+#Printing The Predicted Value Of Local Splitted Test Data
+print("The Predicted Values Cover Type Of Local Test Data",Cover_type)
+#Checking The  accuracy This Model Using The Local Test Data
+ETree=cls.score(t_test_Norm,y_test_Norm)
+#Printing The Accuracy Score Of The Decision Tree Classifier
+print("The Accuracy Score Of Extra Tree Classifier On Local Test Data",ETree*100)
+
+#Here We Are #Fitting Our training Data
+clf = RidgeClassifier().fit(t_train_Norm, y_train_Norm)
+#Predicting The Values Of Local Splitted Test Data
+Cover_type = clf.predict(t_test_Norm)
+#Printing The Predicted Value Of Local Splitted Test Data
+print("The Predicted Values Cover Type Of Local Test Data",Cover_type)
+#Checking The  accuracy This Model Using The Local Test Data
+Ridge=clf.score(t_test_Norm,y_test_Norm)
+#Printing The Accuracy Score Of The Decision Tree Classifier
+print("The Accuracy Score Of RidgeClassifier On Local Test Data",Ridge*100)
+
+#Here We Are #Fitting Our training Data
+clf = RandomForestClassifier(max_depth=100, random_state=0)
+clf.fit(t_train_Norm,y_train_Norm)
+#Predicting The Values Of Local Splitted Test Data
+Cover_type = clf.predict(t_test_Norm)
+#Printing The Predicted Value Of Local Splitted Test Data
+print("The Predicted Values Cover Type Of Local Test Data",Cover_type)
+#Checking The  accuracy This Model Using The Local Test Data
+RandomForest=clf.score(t_test_Norm,y_test_Norm)
+#Printing The Accuracy Score Of The Decision Tree Classifier
+print("The Accuracy Score Of RidgeClassifier On Local Test Data",RandomForest*100)
+
+#Here We Have Tweaked Our classifiers By  Adjusting The Parameters
+dtree_model = DecisionTreeClassifier(criterion="entropy",max_depth = 20000000).fit(t_train, y_train)
+#Predicting The Values Of Local Splitted Test Data
+Cover_type = dtree_model.predict(t_test)
+#Printing The Predicted Value Of Local Splitted Test Data
+print("The Predicted Values Cover Type Of Local Test Data",Cover_type)
+#Checking The  accuracy This Model Using The Local Test Data
+Tree=dtree_model.score(t_test,y_test)
+#Printing The Accuracy Socre Of The Decision Tree Classifier
+print("The Accuracy Score Of Decision Tree Classifier On Local Test Data",Tree*100)
+#Predicting The Test Data Values
+Cover_type=dtree_model.predict(test)
+#Printing The Predicting Values
+print("The Predicted Values For The Kaggle Test Data Cover Type",Cover_type)
+#Exporting The Id And Cover_Type Columns Into Sample Csv
+sample = test[['Id']].copy()
+sample['Cover_Type'] = Cover_type
+print(sample)
+#Creating Our Csv File With That Two Exported Columns For Submission On Kaggle
+sample.to_csv('sample.csv',index=False)
