@@ -12,6 +12,23 @@ requirement and used the best 4 classifiers for training our 8 models. We resear
 tried our best to acheieve highest accuracy and for achieving this accuracy we have tweak our classifiers by adjusting thier parameters.
 
 **Which models you selected and why?**
+**Decision Tree Classifier**
+we used this classifier because it is able to handle both numerical and categorical data. However scikit-learn implementation does not support categorical variables for now. Other techniques are usually specialised in analysing datasets that have only one type of variable. See algorithms for more information.
+Also it ables to handle multi-output problems
+
+**Bagging Classifier**
+We used this classifier because It provides stability and increases the machine learning algorithm's accuracy that is used in statistical classification and regression. It helps in reducing variance.
+
+**Extra tree Classifier**
+We used this classifier because it used average and to improve the predictive accuracy and control over-fitting.
+
+**Ridge Classifiers**
+We used this classifier because  it modifies the loss function by adding the penalty (shrinkage quantity) equivalent to the square of the magnitude of coefficients.
+
+**Random Forest Classifiers**
+We used this classifier because it does not suffer from the overfitting problem. The main reason is that it takes the average of all the predictions, which cancels out the biases. The algorithm can be used in both classification and regression problems. Random forests can also handle missing values.
+
+
 
 
 **Problems you faced?**
