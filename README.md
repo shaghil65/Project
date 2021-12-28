@@ -28,7 +28,11 @@ We used this classifier because  it modifies the loss function by adding the pen
 **Random Forest Classifiers**
 We used this classifier because it does not suffer from the overfitting problem. The main reason is that it takes the average of all the predictions, which cancels out the biases. The algorithm can be used in both classification and regression problems. Random forests can also handle missing values.
 
+On the bases of this, we have selected decision tree classifier model for pridictiong the values of test cover type for making final submission on kaggle.
 
+
+**What were the performances of each model on local test data?**
+The models which we have selected, they perform well and all of them have the accuracy of more than 80%-90% on local test data. Based on these performances of our model we have selected the decision tree classifier model which had the accuracy of 94.5% on local test data and on the given test data it have the accuracy of 93.5%.
 
 
 **Problems you faced?**
