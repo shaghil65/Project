@@ -18,6 +18,7 @@ tried our best to acheieve highest accuracy and for achieving this accuracy we h
 One of the main problem was that our dataset had NAN values in 3 columns so we dropped them to make the accurracy higher then we had another major problem of normalizing our training data so we met our teacher Mr. Farooq who had guided us in how to normalize data. After this meeting our problem got solved. 
 
 **Refrences you used?**
+Refrences
 https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier
 https://scikit-learn.org/stable/modules/generated/sklearn.tree.ExtraTreeClassifier.html#sklearn.tree.ExtraTreeClassifier
 https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier
